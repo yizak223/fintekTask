@@ -1,0 +1,71 @@
+.container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.logo{
+    width: 8vw;
+}
+.secContainer {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 7vh;
+    height: 100%;
+}
+.welcomeInputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+.welcomeSentence {
+    width: 280px;
+    font: normal normal 300 30px/44px Heebo;
+    letter-spacing: 0px;
+    color: #707070;
+}
+
+.containerLabelInput {
+    width: 90%;
+}
+
+.inputContainer {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    padding: 1rem 1rem 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: inherit;
+}
+
+.label {
+    font-size: 16px;
+    color: #707070;
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: 10px;
+}
+
+.inputField {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    width: 70%;
+    margin-left: 10px;
+}
+
+.inputField:focus {
+    outline: none;
+}
+
+.button {
+    background-color: #F5F5F5;
+    border: none;
+    padding: 5px 20px;
+    background-color: #046B3B;
+    color: #FFFFFF;
+    font: normal normal 300 18px/27px Heebo;
+    border-radius: 10px;
+    cursor: pointer;
+}

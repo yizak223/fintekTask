@@ -1,0 +1,18 @@
+.container {
+    background-color: #DDE4E6;
+    width: 50%;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstH1{
+    font-size: 40px;
+    color: #707070;
+}
+.secH1{
+    font-size: 18px;
+    color: #2e2a2a;
+}
