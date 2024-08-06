@@ -4,12 +4,7 @@ import weatherRoutes from './routes/weatherRoutes';
 
 const app = express();
 
-const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with your client's domain
-  optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions)); // Enable CORS with options
+app.use(cors());
 app.use(express.json());
 app.use('/api/weather', weatherRoutes);
 

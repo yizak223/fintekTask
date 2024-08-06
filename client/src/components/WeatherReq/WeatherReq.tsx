@@ -1,24 +1,56 @@
-import logo from '../../assets/logo.svg'
-import TimesTemp from '../TimesTemp/TimesTemp'
-import styles from './wehatherReq.module.css'
+import { useState } from 'react';
+import logo from '../../assets/logo.svg';
+import TimesTemp from '../TimesTemp/TimesTemp';
+import styles from './wehatherReq.module.css';
 
 export default function WeatherReq() {
+    const [weather, setWeather] = useState(null);
+    const [city, setCity] = useState('');
+
+    const fetchWeather = async () => {
+        if (!city) {
+            alert('Please enter a city name');
+            return;
+        };
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/weather?city=${city}`);
+            const data = await response.json();
+            console.log(data);
+
+            setWeather(data);
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+        }
+    };
+
     return (
         <section className={styles.container}>
             <img className={styles.logo} src={logo} alt="fintek" />
             <div className={styles.secContainer}>
                 <div className={styles.welcomeInputContainer}>
-                    <h1 className={styles.welcomeSentence}>Use our weather app to see the weather around the world</h1>
+                    <h1 className={styles.welcomeSentence}>
+                        Use our weather app to see the weather around the world
+                    </h1>
                     <div className={styles.containerLabelInput}>
                         <label className={styles.label} htmlFor="city">City name</label>
                         <div className={styles.inputContainer}>
-                            <input className={styles.inputField} type="text" />
-                            <button className={styles.button}>Check</button>
+                            <input
+                                id='city'
+                                className={styles.inputField}
+                                type="text"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                            />
+                            <button className={styles.button} onClick={fetchWeather}>
+                                Check
+                            </button>
                         </div>
                     </div>
                 </div>
+
                 <TimesTemp />
             </div>
         </section>
-    )
+    );
 }

@@ -1,4 +1,3 @@
-import './App.css'
 import Home from './pages/Home/Home'
 import styles from './app.module.css'
 
