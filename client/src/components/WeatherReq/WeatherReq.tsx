@@ -2,9 +2,12 @@ import { useState } from 'react';
 import logo from '../../assets/logo.svg';
 import TimesTemp from '../TimesTemp/TimesTemp';
 import styles from './wehatherReq.module.css';
+import { useWeather } from '../../context/Weather';
+
+
 
 export default function WeatherReq() {
-    const [weather, setWeather] = useState(null);
+    const { setResMode, setWeather, setLocation, setHourlyWeather } = useWeather();
     const [city, setCity] = useState('');
 
     const fetchWeather = async () => {
@@ -16,12 +19,22 @@ export default function WeatherReq() {
         try {
             const response = await fetch(`http://localhost:5000/api/weather?city=${city}`);
             const data = await response.json();
-            console.log(data);
 
-            setWeather(data);
+            setLocation(data.location)
+            setWeather(data.current);
+            setHourlyWeather(data.forecast.forecastday[0].hour);
+            setResMode(1)
+            
+            if (response.status === 400) {
+                setResMode(2)
+            } else if (response.status === 500) {
+                setResMode(3)
+            }
         } catch (error) {
             console.error('Error fetching weather data:', error);
+
         }
+
     };
 
     return (
@@ -48,7 +61,6 @@ export default function WeatherReq() {
                         </div>
                     </div>
                 </div>
-
                 <TimesTemp />
             </div>
         </section>

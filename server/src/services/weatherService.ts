@@ -5,7 +5,7 @@ const apiKey = '176bd7c97f134eae80c164903240508';
 const baseUrl = 'http://api.weatherapi.com/v1';
 
 export const getWeatherByCity = async (city: string): Promise<WeatherResponse> => {
-  const response = await axios.get(`${baseUrl}/current.json`, {
+  const response = await axios.get(`${baseUrl}/forecast.json`, {
     params: {
       key: apiKey,
       q: city,
