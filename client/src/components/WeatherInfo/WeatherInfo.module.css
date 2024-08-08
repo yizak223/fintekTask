@@ -1,3 +1,85 @@
-.container{
-    background-color: #27737D;
+:root {
+    --bg-color: #27737D;
+    --text-primary: #E8F1F2;
+    --text-secondary: #A8C6CB;
+    --text-highlight: #FFFFFF;
+    --font-size-small: 18px;
+    --font-size-medium: 20px;
+    --font-size-large: 30px;
+    --font-size-xlarge: 80px;
+    --padding-container: 1rem 2.5rem;
+    --gap-container: 20px;
+    --margin-top-container: 20px;
+}
+
+.container {
+    background-color: var(--bg-color);
+    width: 100%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-container);
+    padding: var(--padding-container);
+}
+
+.containerTimeZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: var(--margin-top-container);
+}
+
+.city {
+    color: var(--text-primary);
+    font-size: var(--font-size-medium);
+    font-weight: 200;
+}
+
+.countryTime {
+    font-size: var(--font-size-small);
+    color: var(--text-secondary);
+    font-weight: 100;
+}
+
+.containerMainTemp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainTemp {
+    font-size: var(--font-size-xlarge);
+    font-weight: 700;
+    color: var(--text-highlight);
+    height: var(--font-size-xlarge);
+}
+
+.conditionText {
+    color: var(--text-primary);
+    font-size: var(--font-size-large);
+    font-weight: 100;
+}
+
+.containerDetails,
+.hourly {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.itemDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titleItem {
+    color: var(--text-primary);
+    font-weight: 200;
+}
+
+.detailItem {
+    color: var(--text-highlight);
+    font-weight: 600;
 }

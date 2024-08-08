@@ -12,25 +12,34 @@ export default function WeatherInfo() {
     }
     return (
         <section className={styles.container}>
-            <div>
-                <h1>{location?.name}</h1>
-                <h2>{location?.country}</h2>
-                <h2>{formatDateTime(location?.localtime)}</h2>
+            <div className={styles.containerTimeZone}>
+                <p className={styles.city}>{location?.name}</p>
+                <p className={styles.countryTime}>{location?.country}</p>
+                <p className={styles.countryTime}>{formatDateTime(location?.localtime)}</p>
             </div>
-            <div>
-                <h1>{weather?.temp_c}°</h1>
-                <h2>{weather?.condition.text}</h2>
+            <div className={styles.containerMainTemp}>
+                <span className={styles.mainTemp}>{String(weather?.temp_c).slice(0, 2)}°</span>
+                <span className={styles.conditionText}>{weather?.condition.text}</span>
             </div>
-            <div>
-                <div><p>precipitation{weather?.precip_mm}</p></div>
-                <div><p>humidity{weather?.humidity}</p></div>
-                <div><p>wind{weather?.wind_kph}</p></div>
+            <div className={styles.containerDetails}>
+                <div className={styles.itemDetails}>
+                    <p className={styles.titleItem}>precipitation</p>
+                    <p className={styles.detailItem}>{weather?.precip_mm} mm</p>
+                </div>
+                <div className={styles.itemDetails}>
+                    <p className={styles.titleItem}>humidity</p>
+                    <p className={styles.detailItem}>{weather?.humidity}%</p>
+                </div>
+                <div className={styles.itemDetails}>
+                    <p className={styles.titleItem}>wind</p>
+                    <p className={styles.detailItem}>{String(weather?.wind_kph).slice(0, 2)} km/h</p>
+                </div>
             </div>
-            <div>
+            <div className={styles.hourly}>
                 {relevantHours?.map((hour, index) => (
-                    <div key={index}>
-                        <p>{hour.time.slice(11, 13)} </p>
-                        <p>{String(hour.temp_c).slice(0, 2)}°</p>
+                    <div className={styles.itemDetails} key={index}>
+                        <p className={styles.titleItem}>{hour.time.slice(11, 16)} </p>
+                        <p className={styles.detailItem}>{String(hour.temp_c).slice(0, 2)}°</p>
                     </div>
                 ))}
             </div>

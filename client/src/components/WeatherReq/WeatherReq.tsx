@@ -16,21 +16,20 @@ export default function WeatherReq() {
             return;
         };
 
+        const response = await fetch(`http://localhost:5000/api/weather?city=${city}`);
         try {
-            const response = await fetch(`http://localhost:5000/api/weather?city=${city}`);
             const data = await response.json();
 
             setLocation(data.location)
             setWeather(data.current);
             setHourlyWeather(data.forecast.forecastday[0].hour);
             setResMode(1)
-            
+        } catch (error) {
             if (response.status === 400) {
                 setResMode(2)
             } else if (response.status === 500) {
                 setResMode(3)
             }
-        } catch (error) {
             console.error('Error fetching weather data:', error);
 
         }
