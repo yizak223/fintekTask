@@ -5,3 +5,7 @@
   font-optical-sizing: auto;
   font-style: normal;
 }
+html{
+  background-color: #F1F1F1;
+  height: fit-content;
+}
