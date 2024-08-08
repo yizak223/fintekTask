@@ -1,11 +1,14 @@
 import { useWeather } from '../../context/Weather';
+import { useContext } from 'react';
+import { LoadingContext } from '../../context/loading';
 import WeatherInfo from '../WeatherInfo/WeatherInfo';
 import styles from './WeatherRes.module.css';
 
-
-
 export default function WeatherRes() {
   const { resMode } = useWeather();
+  const { loading } = useContext(LoadingContext);
+
+
 
   const renderContent = () => {
     switch (resMode) {
@@ -19,7 +22,11 @@ export default function WeatherRes() {
       case 1:
         return (
           <section className={styles.container}>
-            <WeatherInfo />
+            {loading ? (
+              <div className={styles.loader}></div>
+            ) : (
+              <WeatherInfo />
+            )}
           </section>
         );
       case 2:
@@ -33,7 +40,7 @@ export default function WeatherRes() {
       default:
         return null;
     }
-  }
+  };
 
   return (
     <section className={styles.container}>
@@ -41,4 +48,3 @@ export default function WeatherRes() {
     </section>
   );
 }
-
