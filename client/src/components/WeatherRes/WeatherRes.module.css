@@ -22,4 +22,16 @@
         height: 70vh;
     }
 }
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        min-height: fit-content;
+        padding: 30px 20px;
+    }
+    .firstH1{
+        font-size: 23px;
+    }
+    .secH1{
+        font-size: 15px;
+    }
+}
