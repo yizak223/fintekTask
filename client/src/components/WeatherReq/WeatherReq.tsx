@@ -3,6 +3,7 @@ import logo from '../../assets/logo.svg';
 import TimesTemp from '../TimesTemp/TimesTemp';
 import styles from './wehatherReq.module.css';
 import { useWeather } from '../../context/Weather';
+import baseURL from '../../config/baseUrl';
 
 
 
@@ -16,7 +17,7 @@ export default function WeatherReq() {
             return;
         };
 
-        const response = await fetch(`http://localhost:5000/api/weather?city=${city}`);
+        const response = await fetch(`${baseURL}/api/weather?city=${city}`);
         try {
             const data = await response.json();
 
